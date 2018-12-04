@@ -10,3 +10,6 @@ how to use
 4. copy request to <https://wwwh2.smartevals.com/surveysetup/evalcenter.aspx?y=all&MenuItemID=228> as curl
 5. paste in curl.sh
 6. run `./update.sh "FA 2018"`
+7. configure your webserver to serve status.txt, this is a personal problem
+
+thanks to tim aveni for the help
