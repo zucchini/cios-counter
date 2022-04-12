@@ -3,47 +3,35 @@
 import sys
 from string import digits
 from bs4 import BeautifulSoup
+from fractions import Fraction
 
 def main(argv):
     if len(argv) != 1:
-        print('usage: ./dehtmlify.py <term>')
-        sys.exit(1)
+        print('usage: ./dehtmlify.py "Spring 2022 CS 6290 Lecture A #21973202202"')
+        return 1
 
-    term_wanted = argv[0]
+    title_wanted = argv[0]
 
-    sections = set()
-    section_responses = {}
-    section_totals = {}
+    response_rate = None
 
     soup = BeautifulSoup(sys.stdin, 'html.parser')
 
-    # Find columns
-    cols = [col.text for col in soup.find_all('th')]
-    col_indices = {col: i for i, col in enumerate(cols)}
+    for course in soup.select('.MyEvalCenterToBeOpened'):
+        title = course.select('.classTitle')[0].text
+        if title == title_wanted:
+            responded_numbers = course.select('.spanRespondedNumbers')
+            n_responded = int(responded_numbers[0].text)
+            n_total = int(responded_numbers[2].text)
+            response_rate = (n_responded, n_total)
+            break
 
-    for section_row in soup.select('tbody tr'):
-        section_columns = section_row.find_all('td')
-        term = section_columns[col_indices['Term']].text
-        section = section_columns[col_indices['Sec']].text
-        # A1 -> A, B34 -> B, etc
-        letter = section.rstrip(digits)
+    if response_rate is None:
+        raise ValueError('i cant find that course!')
 
-        if term != term_wanted:
-            continue
+    print('{:.2f}%'.format(float(response_rate[0]) * 100.0 / float(response_rate[1])))
+    print('{}/{}'.format(response_rate[0], response_rate[1]))
 
-        # stats
-        total = int(section_columns[col_indices['Total']].text)
-        resp = int(section_columns[col_indices['Resp']].text)
-
-        sections.add(letter)
-        section_responses.setdefault(letter, 0)
-        section_totals.setdefault(letter, 0)
-        section_responses[letter] += resp
-        section_totals[letter] += total
-
-    for section in sorted(sections):
-        percent = section_responses[section] / section_totals[section] * 100
-        print('{}: {:.2f}%'.format(section, percent))
+    return 0
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    sys.exit(main(sys.argv[1:]))
