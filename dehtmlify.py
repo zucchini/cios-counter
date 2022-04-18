@@ -16,7 +16,7 @@ def main(argv):
 
     soup = BeautifulSoup(sys.stdin, 'html.parser')
 
-    for course in soup.select('.MyEvalCenterToBeOpened, .MyEvalCenterOpened'):
+    for course in soup.find_all(class_=['MyEvalCenterToBeOpened', 'MyEvalCenterOpened']):
         title = course.select('.classTitle')[0].text
         if title == title_wanted:
             responded_numbers = course.select('.spanRespondedNumbers')
