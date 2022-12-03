@@ -7,7 +7,7 @@ how to use
  1. go to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx>
  2. open network tools
  3. refresh page
- 4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl
+ 4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl. NOTE: some browsers including Chrome will include a `--compressed` flag in the output. You should remove this flag if present.
  5. paste in curl.sh
  6. run `./update.sh "Spring 2022 CS 6290 Lecture A #21973202202"`
  7. configure your webserver to serve status.txt. for nginx i did
