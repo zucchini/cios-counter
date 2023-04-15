@@ -18,7 +18,7 @@ while true; do
     {
         printf 'cs 6290 cios progress\n'
         printf '\n'
-        . curl.sh | gunzip - | ./dehtmlify.py "$sem" | figlet
+        . curl.sh | ./dehtmlify.py "$sem" | figlet
         printf '\n'
         printf 'https://b.gatech.edu/cios\n'
         printf '\n'

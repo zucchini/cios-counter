@@ -9,7 +9,12 @@ how to use
  3. refresh page
  4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl. NOTE: some browsers including Chrome will include a `--compressed` flag in the output. You should remove this flag if present.
  5. paste in curl.sh
- 6. run `./update.sh "Spring 2022 CS 6290 Lecture A #21973202202"`
+ 6. run `./update.sh "Spring 2022 CS 6290 A"`. this string comes from the following text on the page from step \#1 (selected for emphasis):
+
+    ![](readme-screenshot.png)
+
+    (also, you should consider running `update.sh` in a [tmux session][1] so
+    that it keeps running (updating the counter) when your ssh session dies)
  7. configure your webserver to serve status.txt. for nginx i did
 
         server {
@@ -21,3 +26,5 @@ how to use
                         try_files /status.txt /status.txt;
                 }
         }
+
+[1]: https://www.redhat.com/sysadmin/introduction-tmux-linux
