@@ -21,10 +21,20 @@ how to use
                 listen 443 ssl;
                 listen [::]:443 ssl;
                 server_name cios.ausb.in;
+                location /favicon.ico {
+                    root /var/www/cios;
+                    try_files /favicon.ico /favicon.ico;
+                }
                 location / {
-                        root /var/www/cios/;
-                        try_files /status.txt /status.txt;
+                    root /var/www/cios;
+                    try_files /status.txt /status.txt;
                 }
         }
 
+bibliography
+------------
+
+the favicon is due to [some guy named roi][2]
+
 [1]: https://www.redhat.com/sysadmin/introduction-tmux-linux
+[2]: https://github.com/ra4king/CircuitSim/blob/6ba0ee8e7631d67dbedf015c27b1bc2dc0ccc78c/release/icon.ico
