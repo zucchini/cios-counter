@@ -28,8 +28,11 @@ def main(argv):
     if response_rate is None:
         raise ValueError('i cant find that course!')
 
-    print('{:.2f}%'.format(float(response_rate[0]) * 100.0 / float(response_rate[1])))
-    print('{}/{}'.format(response_rate[0], response_rate[1]))
+    resp_ratio =  float(response_rate[0]) * 100.0 / float(response_rate[1])
+    secno = title_wanted[-1]
+    print('Section {}:'.format(secno))
+    print('{:.2f}%'.format(resp_ratio))
+    print('{}/{}'.format(*response_rate))
 
     return 0
 

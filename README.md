@@ -7,7 +7,7 @@ how to use
  1. go to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx>
  2. open network tools
  3. refresh page
- 4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl. NOTE: some browsers including Chrome will include a `--compressed` flag in the output. You should remove this flag if present.
+ 4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl
  5. paste in curl.sh
  6. run `./update.sh "Spring 2022 CS 6290 A"`. this string comes from the following text on the page from step \#1 (selected for emphasis):
 
@@ -22,7 +22,7 @@ how to use
                 listen [::]:443 ssl;
                 server_name cios.ausb.in;
                 location / {
-                        root /home/admin/cs6290/cios-counter/;
+                        root /var/www/cios/;
                         try_files /status.txt /status.txt;
                 }
         }

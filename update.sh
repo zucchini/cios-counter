@@ -16,14 +16,23 @@ sem=$1
 
 while true; do
     {
-        printf 'cs 6290 cios progress\n'
-        printf '\n'
-        . curl.sh | ./dehtmlify.py "$sem" | figlet
-        printf '\n'
-        printf 'https://b.gatech.edu/cios\n'
-        printf '\n'
-        printf 'last updated: %s\n' "$(date)"
-        printf 'source code: https://github.com/zucchini/cios-counter/\n'
+        printf -- '             CS 2110 CIOS Progress\n'
+        printf -- '             =====================\n'
+        printf -- '\n'
+        . curl.sh | ./dehtmlify.py "$sem" | figlet -c -w 50
+        printf -- '\n'
+        printf -- '              Do your CIOS here:\n'
+        printf -- '      ===>                           <===\n'
+        printf -- '      ===> https://b.gatech.edu/cios <===\n'
+        printf -- '      ===>                           <===\n'
+        printf -- '\n'
+        printf -- '\n'
+        printf -- '\n'
+        printf -- '\n'
+        printf -- '\n'
+        printf -- '------------------------------------------------------\n'
+        printf -- 'last updated: %s\n' "$(TZ=America/New_York date)"
+        printf -- 'source code: https://github.com/zucchini/cios-counter/\n'
     } >status.next.txt
 
     # Update the file atomically if we can (that is, if we crash, leave it alone)
