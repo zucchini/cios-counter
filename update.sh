@@ -18,7 +18,9 @@ while true; do
     . curl.sh >page.html
 
     for sem in "${sems[@]}"; do
-        mkdir -p "$sem"
+        sem_dir="$(dirname "${BASH_SOURCE[0]}")/${sem// /-}"
+
+        mkdir -p "$sem_dir"
 
         {
             printf -- '             CS 2110 CIOS Progress\n'
@@ -38,10 +40,10 @@ while true; do
             printf -- '------------------------------------------------------\n'
             printf -- 'last updated: %s\n' "$(TZ=America/New_York date)"
             printf -- 'source code: https://github.com/zucchini/cios-counter/\n'
-        } >"$sem/status.next.txt"
+        } >"$sem_dir/status.next.txt"
 
         # Update the file atomically if we can (that is, if we crash, leave it alone)
-        mv "$sem/status.next.txt" "$sem/status.txt"
+        mv "$sem_dir/status.next.txt" "$sem_dir/status.txt"
     done
 
     sleep 5m
