@@ -4,12 +4,12 @@ cios progress garbo
 how to use
 ----------
 
- 1. go to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx>
+ 1. go to <https://mwfoi.smartevals.com/instructor/myevalcenter.aspx>
  2. open network tools
  3. refresh page
- 4. copy request to <https://mwfoi.smartevals.com/instructor/MyEvalCenter.aspx> as curl
+ 4. copy request to <https://mwfoi.smartevals.com/instructor/myevalcenter.aspx> as curl
  5. paste in curl.sh
- 6. run `./update.sh "Spring 2022 CS 6290 A"`. this string comes from the following text on the page from step \#1 (selected for emphasis):
+ 6. run `./update.sh "Spring 2022 CS 6290 A" "Spring 2022 CS 6290 B"`. this string comes from the following text on the page from step \#1 (selected for emphasis):
 
     ![](readme-screenshot.png)
 
