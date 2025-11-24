@@ -22,11 +22,26 @@ how to use
                 listen [::]:443 ssl;
                 server_name cios.ausb.in;
                 location /favicon.ico {
-                    root /var/www/cios;
+                    root /var/www/cios-counter/;
                     try_files /favicon.ico /favicon.ico;
                 }
-                location / {
-                    root /var/www/cios;
+                location /cs2110/cios/a/ {
+                    root /var/www/cios/cios-counter/Fall-2025-CS-2110-Lecture-A/;
+                    try_files /status.txt /status.txt;
+                }
+
+                location /cs2110/cios/b/ {
+                    root /var/www/cios/cios-counter/Fall-2025-CS-2110-Lecture-B/;
+                    try_files /status.txt /status.txt;
+                }
+
+                location /cs2110/cios/c/ {
+                    root /var/www/cios/cios-counter/Fall-2025-CS-2110-Lecture-C/;
+                    try_files /status.txt /status.txt;
+                }
+
+                location /cs2110/cios/d/ {
+                    root /var/www/cios/cios-counter/Fall-2025-CS-2110-Lecture-D/;
                     try_files /status.txt /status.txt;
                 }
         }
